@@ -1,0 +1,32 @@
+name: astrbot_plugin_vision_memory
+display_name: 魔裁视觉识图与三库记忆
+short_desc: UptonKipling 制作的 AstrBot 多模态视觉识别、魔裁人物强化与三层图片记忆库插件。
+desc: |
+  首次部署教程（含 CCIP 手动安装步骤与魔裁图库构建）见 README 顶部「首次部署教程（图文）」章节。
+
+  一个面向 AstrBot 的多模态识图插件。加入可选的 CCIP 动漫人物视觉核验。它只在私聊收到图片、或群聊中 @Bot 并带图/引用含图消息时强制启动识图；识图结果会临时注入当前 LLM 上下文，但不会强迫 Bot 在最终回复中讨论图片。
+
+  内置三个可管理图片库：魔裁人物库、人物事物添加库、Bot图片库。魔裁人物库预置 16 个角色栏目，并采用二创友好，支持显式纠错覆盖与跨上下文图片账本的身份特征匹配策略；魔裁人物默认 42%，其余库默认 45%，都不要求与参考图完全一致。上传图片时自动调用 AstrBot 已配置的视觉模型生成识别关键特征。
+
+  Bot图片库采用管理员手动命名记忆：未知图片不会自动进入 Bot 图片库，而是默认保留 7 天在“待管理员命名”队列，并在每个会话达到 20 张时清理最旧图片。插件不读取聊天上下文给未知图片起名，不从用户后续发言学习名称，也绝不使用 Bot 自己的回复作为身份来源。管理员只能在 WebUI 查看原图并手动输入最终名称后，图片才会进入 Bot 图片库。识别为夏目安安时仍会注入“图片人物就是 Bot 自己”的身份规则。Bot 自己发送的图片不会进入库。
+version: 1.9.1
+author: UptonKipling
+repo: https://github.com/UptonKipling/astrbot_plugin_vision_memory
+astrbot_version: ">=4.24.1,<6"
+support_platforms:
+  - aiocqhttp
+  - qq_official
+  - qq_official_webhook
+  - telegram
+  - wecom
+  - wecom_ai_bot
+  - discord
+  - lark
+  - dingtalk
+tags:
+  - vision
+  - image
+  - multimodal
+  - magic-trial
+  - memory
+  - webui
